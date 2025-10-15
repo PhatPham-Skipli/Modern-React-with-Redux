@@ -10,13 +10,13 @@ export const UserProvider = ({ children }) => {
   const [subscriptions, setSubscriptions] = useState([])
 
   useEffect(() => {
-  const user = localStorage.getItem('user')
-  const profile = localStorage.getItem('profile')
-  if (user && profile) {
-    setUser(JSON.parse(user))
-    setProfile(JSON.parse(profile))
-  }
-}, [])
+    const user = localStorage.getItem('user')
+    const profile = localStorage.getItem('profile')
+    if (user && profile) {
+      setUser(JSON.parse(user))
+      setProfile(JSON.parse(profile))
+    }
+  }, [])
 
   useEffect(() => {
     if (profile?.sub) {
@@ -27,8 +27,14 @@ export const UserProvider = ({ children }) => {
   const loadUserData = async (googleId) => {
     const userData = await getUserProfile(googleId)
     if (userData) {
-      setLikedVideos(userData.likedVideos || [])
-      setSubscriptions(userData.subscriptions || [])
+      setLikedVideos(userData.likedVideos?.map(v => ({
+        ...v,
+        youtubeId: v.youtubeId || v._id
+      })) || [])
+      setSubscriptions(userData.subscriptions?.map(c => ({
+        ...c,
+        youtubeId: c.youtubeId || c._id
+      })) || [])
     }
   }
 
@@ -48,4 +54,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   )
 }
-export default UserContext;
+
+export default UserContext

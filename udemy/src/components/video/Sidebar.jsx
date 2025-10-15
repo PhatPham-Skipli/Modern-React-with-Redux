@@ -12,7 +12,10 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchChannels = async () => {
-      if (!profile?.sub || subscriptions.length === 0) return
+      if (!profile?.sub || subscriptions.length === 0) {
+        setChannels([])
+        return
+      }
       const details = await Promise.all(
         subscriptions.slice(0, 5).map(async (ch) => {
           const info = await fetchChannelDetail(ch.youtubeId)

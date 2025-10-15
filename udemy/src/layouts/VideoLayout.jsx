@@ -1,7 +1,7 @@
 import Header from "../components/video/Header";
 import Sidebar from "../components/video/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
-import { RegistryProvider } from "../context/RegistryContext";
+import { UserProvider } from "../context/UserContext";
 
 const VideoLayout = () => {
   const location = useLocation();
@@ -14,7 +14,7 @@ const VideoLayout = () => {
 
 
   return (
-    <RegistryProvider>
+    <UserProvider>
       <div className="min-h-screen flex flex-col">
         <Header />
         <div className="flex flex-1">
@@ -24,7 +24,7 @@ const VideoLayout = () => {
           </div>
         </div>
       </div>
-    </RegistryProvider>
+    </UserProvider>
   );
 };
 

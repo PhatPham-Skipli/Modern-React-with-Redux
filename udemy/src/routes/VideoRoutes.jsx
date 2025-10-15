@@ -4,6 +4,7 @@ import VideoLayout from "../layouts/VideoLayout";
 import VideoPage from "../pages/Video/VideoPage";
 import LikedVideosPage from "../pages/Video/LikedVideosPage";
 import SubscriptionsPage from "../pages/Video/SubscriptionsPage";
+import ChannelPage from "../pages/Video/ChannelPage";
 
 const VideoRoutes = [
   {
@@ -25,6 +26,10 @@ const VideoRoutes = [
       { 
         path: "subscriptions", 
         element: <SubscriptionsPage /> 
+      },
+      { 
+        path: "channel/:channelId", 
+        element: <ChannelPage /> 
       },
       { 
         path: ":id", 
