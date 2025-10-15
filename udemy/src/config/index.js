@@ -1,0 +1,13 @@
+export const YOUTUBE_CONFIG = {
+  API_KEY: import.meta.env.VITE_API_KEY,
+  DEFAULT_REGION: 'VN',
+  DEFAULT_LANGUAGE: 'vi',
+  MAX_RESULTS: 20,
+  VIDEO_CATEGORIES: {
+    MUSIC: '10',
+    ENTERTAINMENT: '24',
+    EDUCATION: '27',
+    SCIENCE_TECH: '28',
+    NEWS: '25'
+  }
+}
